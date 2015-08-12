@@ -28,4 +28,10 @@ $(document).on('ready', function() {
     else
       alert('That game is already in the library!');
   });
+
+  // handler for delete buttons on each game
+  $('.container').on('click', 'button.game-delete', function(event){
+    event.stopPropagation();
+    $(this).parent().remove();
+  });
 });

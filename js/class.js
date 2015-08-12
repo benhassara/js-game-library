@@ -15,10 +15,10 @@ Game.prototype.render = function() {
   // Package data of a Game object into a jQuery object
   // and return it
 
-  var container = $('<div class="col-xs-6 text-center">') ;
+  var container = $('<div class="col-xs-6 text-center game">') ;
   var title = $('<h4>' + this.title + '</h4>');
   var genre = $('<p>' + this.genre + '</p>');
-  var btnDel = $('<button class="btn btn-danger btn-xs">Delete</button>');
+  var btnDel = $('<button class="btn btn-xs btn-danger game-delete">Delete</button>');
 
   container.append(title);
   container.append(genre);
