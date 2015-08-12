@@ -3,6 +3,8 @@
 function Game(title, genre) {
   this.title = title;
   this.genre = genre;
+  // will hold index in GameLibrary
+  this.libIndex = null;
 }
 
 Game.prototype.equalTo = function(otherGame) {
@@ -19,6 +21,8 @@ Game.prototype.render = function() {
   var title = $('<h4>' + this.title + '</h4>');
   var genre = $('<p>' + this.genre + '</p>');
   var btnDel = $('<button class="btn btn-xs btn-danger game-delete">Delete</button>');
+
+  container.data(this);
 
   container.append(title);
   container.append(genre);
@@ -46,9 +50,17 @@ GameLibrary.prototype.addGame = function(newGame) {
   // add a newGame to the GameLibrary if it isn't already in there
 
   if (!this.contains(newGame)) {
+    //set libIndex
+    newGame.libIndex = this.games.length;
     this.games.push(newGame);
     return newGame.render();
   }
+};
+
+GameLibrary.prototype.removeGame = function(game) {
+  // remove a game from the collection
+
+  this.games.splice(game.libIndex, 1);
 };
 
 GameLibrary.prototype.contains = function(game) {
@@ -77,6 +89,11 @@ GameLibrary.prototype.render = function(name) {
   container.attr('id', this.id);
 
   container.append(titleWrap.append(title));
+
+  if (this.games.length > 0)
+    this.games.forEach(function(g){
+      container.append(g.render());
+    });
 
   return container;
 };
