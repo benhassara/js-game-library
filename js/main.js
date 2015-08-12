@@ -1,13 +1,12 @@
-// add scripts
 
 $(document).on('ready', function() {
 
-  // start by hiding add game form
+  // start by hiding add game form - or don't get ahead of yourself, idiot
   // $('#game-form').hide();
 
   var $firstLib = new GameLibrary('My Game Library');
 
-  // $('.container').append($firstLib.render());
+  $('.container').append($firstLib.render());
 
 
   // handler for form submission

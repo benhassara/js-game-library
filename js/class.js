@@ -18,9 +18,11 @@ Game.prototype.render = function() {
   var container = $('<div class="col-xs-6 text-center">') ;
   var title = $('<h4>' + this.title + '</h4>');
   var genre = $('<p>' + this.genre + '</p>');
+  var btnDel = $('<button class="btn btn-danger btn-xs">Delete</button>');
 
   container.append(title);
   container.append(genre);
+  container.append(btnDel);
 
   return container;
 };
@@ -28,7 +30,10 @@ Game.prototype.render = function() {
 // GameLibrary class
 function GameLibrary(title, gamesArr) {
   // expects gamesArr to be an array of Game objs, if given
+
   this.title = title;
+  // hyphen spaced id for DOM accessibility
+  this.id = title.replace(/\s/g, '-').toLowerCase();
 
   // in case games isn't given, set to empty array
   if (Object.prototype.toString.call(gamesArr) === '[object Array]')
@@ -61,12 +66,15 @@ GameLibrary.prototype.contains = function(game) {
     return false;
 };
 
-GameLibrary.prototype.render = function() {
+GameLibrary.prototype.render = function(name) {
   // Render DOM element for GameLibrary that can hold Games
+  // name is a string to name the library
 
   var container = $('<div class="row game-library">');
   var titleWrap = $('<div class="text-center">');
   var title = $('<h4>' + this.title + '</h4>');
+
+  container.attr('id', this.id);
 
   container.append(titleWrap.append(title));
 
