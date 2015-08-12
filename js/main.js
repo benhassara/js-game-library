@@ -1,5 +1,32 @@
 // add scripts
 
 $(document).on('ready', function() {
-  console.log('sanity check!');
+
+  // start by hiding add game form
+  // $('#game-form').hide();
+
+  var $firstLib = new GameLibrary('My Game Library');
+
+  // $('.container').append($firstLib.render());
+
+
+  // handler for form submission
+  $('#game-form').on('submit', function(event){
+    event.preventDefault();
+
+    // grab values
+    var gameName = $('#game-name').val();
+    var gameGenre = $('#game-genre').val();
+
+    // create new Game object
+    var newGame = new Game(gameName, gameGenre);
+
+    // if it isn't in the library, add it
+    if (!$firstLib.contains(newGame)) {
+      $firstLib.addGame(newGame);
+      $('.game-library').append(newGame.render());
+    }
+    else
+      alert('That game is already in the library!');
+  });
 });
