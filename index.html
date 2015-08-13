@@ -15,7 +15,29 @@
         <div class="col-xs-8 col-xs-offset-2">
           <h1 class="text-center">Game Library</h1>
 
+          <form id="lib-add-form">
+            <div class="text-center">
+              <h4>Add a library.</h4>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">Name:</span>
+                <input id="lib-name" type="text" class="form-control" placeholder="Library Name">
+                <span class="input-group-btn">
+                  <button class="btn btn-primary" type="submit">Add</button>
+                </span>
+              </div>
+            </div>
+          </form>
+
           <form id="game-form">
+
+          <div class="form-group">
+              <label>Add to:</label>
+              <select id="lib-choice" class="form-control">
+
+              </select>
+          </div>
 
             <div class="form-group">
               <div class="input-group">
@@ -33,6 +55,7 @@
 
             <div class="text-center">
               <button class="btn btn-primary btn-block" type="submit">Add</button>
+              <button id="lib-add-btn" class="btn btn-default btn-block" type="button">Create Another Library</button>
             </div>
 
           </form>

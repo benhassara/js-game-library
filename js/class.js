@@ -87,6 +87,7 @@ GameLibrary.prototype.render = function(name) {
   var title = $('<h4>' + this.title + '</h4>');
 
   container.attr('id', this.id);
+  container.data('title', this.title);
 
   container.append(titleWrap.append(title));
 
